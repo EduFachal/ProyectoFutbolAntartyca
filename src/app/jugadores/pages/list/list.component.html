@@ -1,0 +1,26 @@
+<h1>Jugadores List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+
+    <table class="table table-striped">
+        <!--Card es un componente hijo del componente lista-->
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Telefono </th>
+                <th scope="col"> Puesto </th>
+                <th scope="col">Equipo </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let item of jugadores">
+            <tr th:each="player : ${players}">
+                <td>{{ item.cod_jugador}}</td>
+                <td>{{ item.nombre}}</td>
+                <td>{{ item.telefono}}</td>
+                <td>{{ item.puesto}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
