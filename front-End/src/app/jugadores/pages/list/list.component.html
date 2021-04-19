@@ -11,15 +11,18 @@
                 <th scope="col"> Nombre </th>
                 <th scope="col"> Telefono </th>
                 <th scope="col"> Puesto </th>
-                <th scope="col">Equipo </th>
+                <th scope="col"> Informacion </th>
+                <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let item of jugadores">
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let jugador of jugadores">
             <tr th:each="player : ${players}">
-                <td>{{ item.cod_jugador}}</td>
-                <td>{{ item.nombre}}</td>
-                <td>{{ item.telefono}}</td>
-                <td>{{ item.puesto}}</td>
+                <td>{{ jugador.cod_jugador}}</td>
+                <td>{{ jugador.nombre}}</td>
+                <td>{{ jugador.telefono}}</td>
+                <td>{{ jugador.puesto}}</td>
+                <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary"> Info Jugador</button></td>
+                <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar Jugador</button></td>
             </tr>
         </tbody>
     </table>

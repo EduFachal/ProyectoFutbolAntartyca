@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './pages/list/list.component';
 import { JugadorComponent } from './pages/jugador/jugador.component';
+import { AddJugadorComponent } from './pages/add-jugador/add-jugador.component';
 
 const routes: Routes = [{
   path:'',
@@ -10,7 +11,15 @@ const routes: Routes = [{
     component:ListComponent
   },
   {
-    path:'jugador',
+    path:'add',
+    component:AddJugadorComponent
+  },
+  {
+    path:'edit/:id',
+    component:AddJugadorComponent
+  },
+  {
+    path:':id',
     component:JugadorComponent
   },
   // Ruta en caso de no detectar alguna de las anteriores para redirigir a list

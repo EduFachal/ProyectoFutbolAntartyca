@@ -1,1 +1,27 @@
-<p>list equipos works!</p>
+<h1>Equipos List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+
+    <table class="table table-striped">
+        <!--Card es un componente hijo del componente lista-->
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Direccion </th>
+                <th scope="col"> Fecha de fundación </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let equipo of equipos">
+            <tr th:each="player : ${players}">
+                <td>{{ equipo.cod_equipo }}</td>
+                <td>{{ equipo.nombre_equipo }}</td>
+                <td>{{ equipo.direccion }}</td>
+                <td>{{ equipo.fecha_fundacion }}</td>
+       <!--         <td><button [routerLink]="['/jugadores',jugador.cod_jugador]">Info Jugador</button></td>
+                <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]">Info Jugador</button></td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Jugador } from '../../interfaces/jugador.interface';
 import { JugadoresService } from '../../service/jugadores.service';
 
@@ -10,7 +10,7 @@ import { JugadoresService } from '../../service/jugadores.service';
 })
 export class ListComponent implements OnInit {
 
-  jugadores : Jugador[] = [];
+  @Input() jugadores : Jugador[] = [];
   constructor(private jugadorService : JugadoresService) { }
 
   ngOnInit(): void {

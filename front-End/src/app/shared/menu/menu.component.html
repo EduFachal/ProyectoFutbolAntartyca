@@ -1,8 +1,27 @@
+<h2 class="mt-3">Listado</h2>
+<hr>
+
 <ul class="list-group">
     <li *ngFor="let item of menu"
         class="list-group-item"
         [routerLink]="[item.ruta]"
-        routerLinkActive="active">
+        routerLinkActive="active"
+        (click)="getValue(item.texto)"
+        >
         {{ item.texto }}
     </li>
+</ul>
+
+<h2 class="mt-3">Acciones</h2>
+<hr>
+
+<ul class="list-group">
+    <li *ngFor="let child of rutaChild"
+        class="list-group-item"
+        [routerLink]="[child.rutaChildren]"
+        routerLinkActive="active"
+        >
+        {{ child.textoChildren }}
+    </li>
+ 
 </ul>
