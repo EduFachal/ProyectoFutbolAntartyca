@@ -24,16 +24,16 @@ export class JugadoresService {
 
   // Servicio para añadir un heroe y que te devuelva a la pagina heroes
   addJugador(jugador: Jugador): Observable<Jugador> {
-    return this.http.post<Jugador>(`${this.baseUrl}/heroes`, jugador);
+    return this.http.post<Jugador>(`${this.baseUrl}/jugador/save`, jugador);
   }
 
   // Servicio para modificar un heroe y que te devuelva a la pagina del heroe segun su id
   updateJugador(jugador: Jugador): Observable<Jugador> {
-    return this.http.post<Jugador>(`${this.baseUrl}/heroes/${jugador.cod_jugador}`, jugador);
+    return this.http.post<Jugador>(`${this.baseUrl}/jugador/update`, jugador);
   }
 
   // Servicio para borrar un heroe
   deleteJugador(jugador: Jugador) {
-    return this.http.get<Jugador>(`${this.baseUrl}/jugador/borrar/${jugador.cod_jugador}`);
+    return this.http.get<Jugador>(`${this.baseUrl}/jugador/delete/${jugador.cod_jugador}`);
   }
 }

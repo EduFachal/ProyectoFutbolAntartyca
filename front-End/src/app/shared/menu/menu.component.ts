@@ -1,15 +1,5 @@
 import { Component } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
-interface MenuRutasPrincipales {
-  ruta: string,
-  texto: string,
-  childrenRouting?: MenuRutasAcciones[]
-}
-
-interface MenuRutasAcciones {
-  rutaChildren: string,
-  textoChildren: string
-}
+import { MenuRutasAcciones, MenuRutasPrincipales } from '../interfaces/shared-interface';
 
 @Component({
   selector: 'app-menu',
@@ -30,8 +20,10 @@ export class MenuComponent {
   menu: MenuRutasPrincipales[] = [
     {ruta: '/jugadores/list', texto: 'Jugadores', childrenRouting: [] },
     {ruta: '/equipos/list', texto: 'Equipos', childrenRouting: [] },
-    {ruta: '/torneos/list', texto: 'Torneos' },
-  ];
+    {ruta: '/torneos/list', texto: 'Torneos', childrenRouting: [] }, 
+    {ruta: '/federacion/list', texto: 'Federaciones', childrenRouting: [] }, 
+    {ruta: '/departamentos/list', texto: 'Departamentos', childrenRouting: [] },
+    {ruta: '/empleados/list', texto: 'Empleados', childrenRouting: [] } ];
 
 
   getValue(txt: string) {

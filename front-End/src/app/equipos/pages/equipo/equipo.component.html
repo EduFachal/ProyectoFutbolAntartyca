@@ -1,1 +1,23 @@
-<p>equipo works!</p>
+<div cols=1 *ngIf="!equipo; else divEquipo">
+
+</div>
+    <ng-template #divEquipo>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+            <div fxFlex="50">
+                <h1> {{ equipo.nombre_equipo}}</h1>
+                <br>
+            </div>
+            <div fxFlex="50">
+                <h1>{{ equipo.nombre_equipo }}</h1>
+                <br><br>
+                <ul>
+                    <li> {{ equipo.direccion }}</li>
+                    <li> {{ equipo.fecha_fundacion  }}</li>
+                </ul>
+                <br>
+                <button class="btn btn-warning" [routerLink]="['/equipos/list']">
+                    Ir atrás
+                </button>
+            </div>
+        </div>
+    </ng-template>

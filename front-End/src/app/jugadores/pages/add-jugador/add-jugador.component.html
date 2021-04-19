@@ -5,23 +5,92 @@
         <small>{{ jugador.nombre }}</small>
     </h1>
 
-    <div class="col-md-6 col-sm-12">
+    <div class="col-md-6 col-sm-12 mx-auto">
+        <form autocomplete="off" [formGroup]="myForm">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="nombre"
+                            placeholder="Introduzca un nombre"
+                            [(ngModel)]="jugador.nombre">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('nombre')"
+                    >Nombre no puede ir vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Equipo</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="equipo"
+                            placeholder="Introduzca el nombre de un equipo"
+                            [(ngModel)]="jugador.equipo.nombre_equipo">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('nombre')"
+                    >Nombre no puede ir vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Telefono</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="telefono"
+                            placeholder="Introduzca numero de telefono"
+                            [(ngModel)]="jugador.telefono">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('telefono')"
+                    >Telefono no puede estar vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Puesto</label>
+            <!--    <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="puesto"
+                            placeholder="Introduzca puesto de juego">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('puesto')"
+                    >Tiene que jugar en una posicion</span>
+                </div>-->
+                <br><br>
+                <select formControlName="puesto" [(ngModel)]="jugador.puesto"> 
+                    <option *ngFor="let puesto of puestos" [ngValue]="puesto">
+                        {{puesto}}
+                    </option>
+                </select>
+            </div>
 
-    </div>
-    <br><br>
-    <div>
-        <div  class="d-flex justify-content-around">
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end"
+                            (click)="save()"
+                            (keyup.enter)="save()"
+                            [disabled]="myForm.invalid">
+                            Guardar cambio
+                    </button>
+                </div>
+            </div>
+
+        </form>
+        <br><br>
+</div>
+<br><br><br>
+<div>
+    <div class="d-flex justify-content-around">
         <button class="btn btn-warning" [routerLink]="['/jugadores/list']">
-            Go back
-        </button>
-        
-        <button  class="btn btn-warning" (click)="save()">
-            Save
+            Volver
         </button>
 
-        <button class="btn btn-danger" (click)="deleteJug()" >
-            Delete
+        <button class="btn btn-danger" (click)="deleteJug()" *ngIf="jugador.cod_jugador">
+            Borrar jugador
         </button>
-        </div>
     </div>
+</div>
 </div>

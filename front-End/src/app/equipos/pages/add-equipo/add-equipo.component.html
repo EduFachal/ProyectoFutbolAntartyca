@@ -1,0 +1,77 @@
+<div class="row mt-5">
+    <h1>
+        {{ equipo.cod_equipo ? 'Edit' : 'New'}}
+        Jugador
+        <small>{{ equipo.nombre_equipo }}</small>
+    </h1>
+
+    <div class="col-md-6 col-sm-12 mx-auto">
+        <form autocomplete="off" [formGroup]="myForm">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="nombre_equipo"
+                            placeholder="Introduzca un nombre"
+                            [(ngModel)]="equipo.nombre_equipo">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('nombre_equipo')"
+                    >Nombre no puede ir vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="direccion"
+                            placeholder="Introduzca dirección del equipo"
+                            [(ngModel)]="equipo.direccion">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('direccion')"
+                    >Direccion no puede ir vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Fecha de fundación</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="fecha_fundacion"
+                            placeholder="Introduzca una fecha"
+                            [(ngModel)]="equipo.fecha_fundacion">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('fecha_fundacion')"
+                    >Fecha no puede estar vacio</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end"
+                            (click)="saveEquipo()"
+                            (keyup.enter)="saveEquipo()"
+                            [disabled]="myForm.invalid">
+                            Guardar cambio
+                    </button>
+                </div>
+            </div>
+
+        </form>
+        <br><br>
+</div>
+<br><br><br>
+<div>
+    <div class="d-flex justify-content-around">
+        <button class="btn btn-warning" [routerLink]="['/equipos/list']">
+            Volver
+        </button>
+
+        <button class="btn btn-danger" (click)="deleteEquipo()" *ngIf="equipo.cod_equipo">
+            Borrar equipo
+        </button>
+    </div>
+</div>
+</div>

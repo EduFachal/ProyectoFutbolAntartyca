@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Equipo } from 'src/app/equipos/interfaces/equipo';
 import { Jugador } from '../../interfaces/jugador.interface';
 import { JugadoresService } from '../../service/jugadores.service';
 
@@ -12,17 +14,34 @@ import { JugadoresService } from '../../service/jugadores.service';
 })
 export class AddJugadorComponent implements OnInit {
 
+  puestos: string[]=['Delantero','Centrocampista','Defensa','Portero'];
+
+  equipo:Equipo={
+    cod_equipo : '1',
+    nombre_equipo : '',
+    direccion : '',
+    fecha_fundacion : ''
+  }
+
   jugador: Jugador={
     cod_jugador: '',
     nombre: '',
     telefono: '',
     puesto: '',
-    equipo: ''
+    equipo: this.equipo
   };
+
+  myForm: FormGroup = this.fb.group({
+    nombre:['',[Validators.required,Validators.minLength(3)]],
+    equipo:['',[Validators.required,Validators.minLength(3)]],
+    telefono:['',[Validators.required, Validators.minLength(0)]],
+    puesto:['',[Validators.required, Validators.minLength(0)]],
+  })
 
   constructor(private jugadorService : JugadoresService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private fb : FormBuilder) { }
 
   ngOnInit(): void {
     if(!this.router.url.includes('edit')){
@@ -34,31 +53,41 @@ export class AddJugadorComponent implements OnInit {
       switchMap(({id}) => this.jugadorService.getJugadorById(id))
     )
     .subscribe( jugador => this.jugador = jugador);
+    this.myForm.reset({
+      nombre: '',
+      equipo: '',
+      telefono: '',
+      puesto: ''
+      
+    })
   }
 
-  // Metodo para guardar un heroe o para modificarlo
   save() {
-   /* if (this.jugador.nombre.trim().length === 0) {
-      return;
-    }
+
     if (this.jugador.cod_jugador) {
-      this.jugadorService.updateHero(this.hero)
+      this.jugadorService.updateJugador(this.jugador)
         .subscribe(hero => { 
-          this.showSnackbar('Hero has been updated')
-          this.router.navigate(['/heroes']) })
+          this.router.navigate(['/jugadores/list']) })
     } else {
-      this.heroesService.addHero(this.hero)
+      this.jugador = {...this.jugador,...this.myForm.value}
+      this.jugador.cod_jugador="1";
+      this.jugador.equipo = this.equipo;
+      console.log(this.jugador)
+      this.jugadorService.addJugador(this.jugador)
         .subscribe(hero => { 
-          this.showSnackbar('Hero has been created')
-          this.router.navigate(['/heroes']) })
-    }*/
+          this.router.navigate(['/jugadores/list']) })
+    }
   }
 
-  // Metodo para borra un heroe
   deleteJug() {
     this.jugadorService.deleteJugador(this.jugador)
           .subscribe(resp => {
             this.router.navigate(['/jugadores/list']);
       })
+  }
+
+  validField(field: string){
+    return this.myForm.controls[field].errors
+            && this.myForm.controls[field].touched;
   }
 }
