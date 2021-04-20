@@ -5,5 +5,9 @@ export interface Jugador {
     nombre: string,
     telefono: string,
     puesto: string,
+    goles: number,
+    altura: number,
+    tarjetas: number,
+    activo: boolean,
     equipo: Equipo
 }

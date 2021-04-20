@@ -21,7 +21,7 @@ export class MenuComponent {
     {ruta: '/jugadores/list', texto: 'Jugadores', childrenRouting: [] },
     {ruta: '/equipos/list', texto: 'Equipos', childrenRouting: [] },
     {ruta: '/torneos/list', texto: 'Torneos', childrenRouting: [] }, 
-    {ruta: '/federacion/list', texto: 'Federaciones', childrenRouting: [] }, 
+    {ruta: '/federaciones/list', texto: 'Federaciones', childrenRouting: [] }, 
     {ruta: '/departamentos/list', texto: 'Departamentos', childrenRouting: [] },
     {ruta: '/empleados/list', texto: 'Empleados', childrenRouting: [] } ];
 

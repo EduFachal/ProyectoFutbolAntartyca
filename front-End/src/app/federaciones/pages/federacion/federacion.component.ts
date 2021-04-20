@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Federacion } from '../../interfaces/federacion';
+import { FederacionesService } from '../../service/federaciones.service';
 
 @Component({
   selector: 'app-federacion',
@@ -8,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FederacionComponent implements OnInit {
 
-  constructor() { }
+  federacion! : Federacion;
+  constructor(private federacionService : FederacionesService,
+              private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params
+    .pipe(
+      switchMap(({id}) => this.federacionService.getFederacionById(id))
+    )
+    .subscribe( federacion => this.federacion = federacion);
   }
 
 }

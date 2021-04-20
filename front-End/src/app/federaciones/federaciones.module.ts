@@ -5,6 +5,7 @@ import { FederacionesRoutingModule } from './federaciones-routing.module';
 import { FederacionComponent } from './pages/federacion/federacion.component';
 import { ListComponent } from './pages/list/list.component';
 import { AddFederacionComponent } from './pages/add-federacion/add-federacion.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AddFederacionComponent } from './pages/add-federacion/add-federacion.co
   ],
   imports: [
     CommonModule,
-    FederacionesRoutingModule
+    FederacionesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class FederacionesModule { }

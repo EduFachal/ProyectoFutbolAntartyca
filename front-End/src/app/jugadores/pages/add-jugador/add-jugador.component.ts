@@ -28,6 +28,10 @@ export class AddJugadorComponent implements OnInit {
     nombre: '',
     telefono: '',
     puesto: '',
+    goles: 0,
+    altura: 0,
+    tarjetas: 0,
+    activo: false,
     equipo: this.equipo
   };
 
@@ -36,7 +40,11 @@ export class AddJugadorComponent implements OnInit {
     equipo:['',[Validators.required,Validators.minLength(3)]],
     telefono:['',[Validators.required, Validators.minLength(0)]],
     puesto:['',[Validators.required, Validators.minLength(0)]],
-  })
+    goles:[0,[Validators.required, Validators.minLength(0)]],
+    altura:[0,[Validators.required, Validators.minLength(0)]],
+    tarjetas:[0,[Validators.required, Validators.minLength(0)]],
+    activo: [false]})
+
 
   constructor(private jugadorService : JugadoresService,
               private router: Router,
@@ -57,8 +65,11 @@ export class AddJugadorComponent implements OnInit {
       nombre: '',
       equipo: '',
       telefono: '',
-      puesto: ''
-      
+      puesto: '',
+      goles: 0,
+      altura: 0,
+      tarjetas: 0,
+      activo: false  
     })
   }
 
@@ -66,15 +77,14 @@ export class AddJugadorComponent implements OnInit {
 
     if (this.jugador.cod_jugador) {
       this.jugadorService.updateJugador(this.jugador)
-        .subscribe(hero => { 
+        .subscribe(resp => { 
           this.router.navigate(['/jugadores/list']) })
     } else {
       this.jugador = {...this.jugador,...this.myForm.value}
       this.jugador.cod_jugador="1";
       this.jugador.equipo = this.equipo;
-      console.log(this.jugador)
       this.jugadorService.addJugador(this.jugador)
-        .subscribe(hero => { 
+        .subscribe(resp => { 
           this.router.navigate(['/jugadores/list']) })
     }
   }

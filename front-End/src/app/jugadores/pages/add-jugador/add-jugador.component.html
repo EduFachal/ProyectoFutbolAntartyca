@@ -47,6 +47,80 @@
                 </div>
             </div>
             <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Goles</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="goles"
+                            placeholder="Introduzca numero de goles"
+                            [(ngModel)]="jugador.goles">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('goles')"
+                    >Goles no puede estar vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Altura</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="altura"
+                            placeholder="Introduzca una altura"
+                            [(ngModel)]="jugador.altura">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('altura')"
+                    >Altura no puede estar vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Tarjetas</label>
+                <div class="col-sm-10">
+                    <input type="text"
+                            class="form-control"
+                            formControlName="tarjetas"
+                            placeholder="Introduzca numero de telefono"
+                            [(ngModel)]="jugador.tarjetas">
+                    <span class="form-text text-danger"
+                    *ngIf="validField('tarjetas')"
+                    >Tarjetas no puede estar vacio</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Activo</label>
+                <div class="col-sm-9">
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" 
+                        type="checkbox"
+                        formControlName="activo">
+                        <label class="form-check-label" for="flexSwitch">
+                            Seleccione si se encuentra en activo</label>
+                    </div>
+                </div>
+            </div>
+            <!--            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Activo</label>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                        type="radio" 
+                        value="S"
+                        formControlName="activoSi" 
+                        id="siRadio">
+                        <label class="form-check-label" for="siRadio">Si</label>
+                    </div>
+        
+                    <div class="form-check">
+                        <input class="form-check-input" 
+                        type="radio" 
+                        value="N" 
+                        formControlName="activoNo"
+                        id="noRadio" 
+                        >
+                        <label class="form-check-label" for="noRadio">No</label>
+                    </div>
+                </div>
+            </div>-->
+            <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Puesto</label>
             <!--    <div class="col-sm-10">
                     <input type="text"

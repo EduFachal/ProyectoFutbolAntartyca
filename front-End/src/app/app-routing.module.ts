@@ -10,6 +10,22 @@ const routes: Routes = [{
   loadChildren: () => import('./equipos/equipos.module').then(m => m.EquiposModule)
 },
 {
+  path:'departamentos',
+  loadChildren: () => import('./departamentos/departamentos.module').then(m => m.DepartamentosModule)
+},
+{
+  path:'empleados',
+  loadChildren: () => import('./empleados/empleados.module').then(m => m.EmpleadosModule)
+},
+{
+  path:'federaciones',
+  loadChildren: () => import('./federaciones/federaciones.module').then(m => m.FederacionesModule)
+},
+{
+  path:'torneos',
+  loadChildren: () => import('./torneos/torneos.module').then(m => m.TorneosModule)
+},
+{
   path: '**',
   redirectTo: '404'
 }

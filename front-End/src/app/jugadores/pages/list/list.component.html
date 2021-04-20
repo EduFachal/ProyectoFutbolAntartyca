@@ -11,6 +11,10 @@
                 <th scope="col"> Nombre </th>
                 <th scope="col"> Telefono </th>
                 <th scope="col"> Puesto </th>
+                <th scope="col"> Goles </th>
+                <th scope="col"> Altura </th>
+                <th scope="col"> Tarjetas </th>
+                <th scope="col"> Activo </th>
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
@@ -21,6 +25,11 @@
                 <td>{{ jugador.nombre}}</td>
                 <td>{{ jugador.telefono}}</td>
                 <td>{{ jugador.puesto}}</td>
+                <td>{{ jugador.goles}}</td>
+                <td>{{ jugador.altura}}</td>
+                <td>{{ jugador.tarjetas}}</td>
+                <td *ngIf="jugador.activo; else divJugador">Si</td>
+                <td><ng-template #divJugador>No</ng-template></td>
                 <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary"> Info Jugador</button></td>
                 <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar Jugador</button></td>
             </tr>

@@ -58,7 +58,6 @@ export class AddEquipoComponent implements OnInit {
           this.router.navigate(['/equipos/list'])
         })
     } else {
-
       this.equipo = { ...this.equipo, ...this.myForm.value }
       this.equipo.cod_equipo = "1";
       this.equipoService.addEquipo(this.equipo)

@@ -1,1 +1,29 @@
-<p>list works!</p>
+<h1>Federaciones List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+
+    <table class="table table-striped">
+        <!--Card es un componente hijo del componente lista-->
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Direccion </th>
+                <th scope="col"> CIF </th>
+                <th scope="col"> Telefono </th>
+                <th scope="col"> Informacion </th>
+                <th scope="col"> Edicion </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let federacion of federaciones">
+            <tr th:each="player : ${players}">
+                <td>{{ federacion.cod_federacion }}</td>
+                <td>{{ federacion.direccion }}</td>
+                <td>{{ federacion.cif }}</td>
+                <td>{{ federacion.telefono }}</td>
+                <td><button [routerLink]="['/federaciones',federacion.cod_federacion]" type="button" class="btn btn-primary">Info Federacion</button></td>
+                <td><button [routerLink]="['/federaciones/edit',federacion.cod_federacion]" type="button" class="btn btn-dark">Info Federacion</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

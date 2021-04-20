@@ -1,1 +1,32 @@
-<p>list works!</p>
+<h1>Empleados List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> DNI </th>
+                <th scope="col"> Direccion </th>
+                <th scope="col"> Telefono </th>
+                <th scope="col"> Informacion </th>
+                <th scope="col"> Edicion </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" 
+        *ngFor="let empleado of empleados">
+            <tr>
+                <td>{{ empleado.cod_emp }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.dni }}</td>
+                <td>{{ empleado.direccion }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td><button [routerLink]="['/empleados',empleado.cod_emp]" type="button" class="btn btn-primary">Más información</button></td>
+                <td><button [routerLink]="['/empleados/edit',empleado.cod_emp]" type="button" class="btn btn-dark">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>-->

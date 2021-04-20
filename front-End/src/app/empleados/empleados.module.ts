@@ -15,7 +15,8 @@ import { EmpleadoComponent } from './pages/empleado/empleado.component';
   ],
   imports: [
     CommonModule,
-    EmpleadosRoutingModule
+    EmpleadosRoutingModule,
+    
   ]
 })
 export class EmpleadosModule { }

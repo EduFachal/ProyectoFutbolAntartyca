@@ -1,1 +1,23 @@
-<p>departamento works!</p>
+<div cols=1 *ngIf="!departamento; else divDepartamento">
+
+</div>
+    <ng-template #divDepartamento>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+            <div fxFlex="50">
+                <h1> {{ departamento.nombre}}</h1>
+                <br>
+            </div>
+            <div fxFlex="50">
+                <h1>{{ departamento.nombre }}</h1>
+                <br><br>
+                <ul>
+                    <li> {{ departamento.descripcion }}</li>
+                    <li> {{ departamento.federacion  }}</li>
+                </ul>
+                <br>
+                <button class="btn btn-warning" [routerLink]="['/departamentos/list']">
+                    Ir atrás
+                </button>
+            </div>
+        </div>
+    </ng-template>

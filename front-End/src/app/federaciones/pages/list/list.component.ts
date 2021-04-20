@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Federacion } from '../../interfaces/federacion';
+import { FederacionesService } from '../../service/federaciones.service';
 
 @Component({
   selector: 'app-list',
@@ -8,9 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  federaciones: Federacion[] = [];
+  constructor(private federacionesService: FederacionesService) { }
 
   ngOnInit(): void {
+    this.federacionesService.getFederaciones().subscribe(federacion =>this.federaciones = federacion)
   }
 
 }
