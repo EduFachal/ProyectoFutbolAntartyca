@@ -1,0 +1,19 @@
+<div cols=1 *ngIf="!ciudad; else divCiudad">
+
+</div>
+    <ng-template #divCiudad>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+            <div fxFlex="50">
+                <h1> {{ ciudad.nombre}}</h1>
+                <br>
+            </div>
+            <div fxFlex="50">
+                <h1>{{ ciudad.nombre }}</h1>
+                <br><br>
+                <br>
+                <button class="btn btn-warning" [routerLink]="['/ciudades/list']">
+                    Ir atrás
+                </button>
+            </div>
+        </div>
+    </ng-template>

@@ -1,1 +1,27 @@
-<p>list works!</p>
+<h1>Jugadores List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
+
+    <table class="table table-striped">
+        <!--Card es un componente hijo del componente lista-->
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Descripcion </th>
+                <th scope="col"> Informacion </th>
+                <th scope="col"> Edicion </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let torneo of torneos">
+            <tr>
+                <td>{{ torneo.cod_torneo}}</td>
+                <td>{{ torneo.nombre}}</td>
+                <td>{{ torneo.descripcion}}</td>
+                <td><button [routerLink]="['/torneos',torneo.cod_torneo]" type="button" class="btn btn-primary">Mas información</button></td>
+                <td><button [routerLink]="['/torneos/edit',torneo.cod_torneo]" type="button" class="btn btn-dark">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

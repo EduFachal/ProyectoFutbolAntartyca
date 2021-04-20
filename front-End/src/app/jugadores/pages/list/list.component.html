@@ -1,7 +1,7 @@
 <h1>Jugadores List</h1>
 <br>
 
-<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
 
     <table class="table table-striped">
         <!--Card es un componente hijo del componente lista-->
@@ -28,10 +28,9 @@
                 <td>{{ jugador.goles}}</td>
                 <td>{{ jugador.altura}}</td>
                 <td>{{ jugador.tarjetas}}</td>
-                <td *ngIf="jugador.activo; else divJugador">Si</td>
-                <td><ng-template #divJugador>No</ng-template></td>
-                <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary"> Info Jugador</button></td>
-                <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar Jugador</button></td>
+                <td>{{ jugador.activo }}</td>
+                <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary">Mas información</button></td>
+                <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>
         </tbody>
     </table>

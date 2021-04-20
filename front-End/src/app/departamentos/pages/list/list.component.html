@@ -1,7 +1,7 @@
 <h1>Departamentos List</h1>
 <br>
 
-<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
 
     <table class="table table-striped">
         <!--Card es un componente hijo del componente lista-->
@@ -10,20 +10,22 @@
                 <th scope="col"> ID </th>
                 <th scope="col"> Nombre </th>
                 <th scope="col"> Descripcion </th>
+                <th scope="col"> Numero de empleados </th>
             <!--    <th scope="col"> Dirección de la federacion </th>-->
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" 
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30"
         *ngFor="let departamento of departamentos">
             <tr th:each="player : ${players}">
                 <td>{{ departamento.cod_depart }}</td>
                 <td>{{ departamento.nombre }}</td>
                 <td>{{ departamento.descripcion }}</td>
+                <td> {{ departamento.empleados.length }}</td>
             <!--    <td>{{ departamento.federacion.direccion }}</td>-->
-                <td><button [routerLink]="['/departamentos',departamento.cod_depart]" type="button" class="btn btn-primary">Info Departamentos</button></td>
-                <td><button [routerLink]="['/departamentos/edit',departamento.cod_depart]" type="button" class="btn btn-dark">Info Departamentos</button></td>
+                <td><button [routerLink]="['/departamentos',departamento.cod_depart]" type="button" class="btn btn-primary">Mas información</button></td>
+                <td><button [routerLink]="['/departamentos/edit',departamento.cod_depart]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>
         </tbody>
     </table>

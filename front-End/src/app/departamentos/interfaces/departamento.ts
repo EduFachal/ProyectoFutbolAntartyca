@@ -5,4 +5,5 @@ export interface Departamento {
     nombre: string,
     descripcion: string,
     federacion: Federacion,
+    empleados: number[]
 }

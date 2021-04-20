@@ -23,8 +23,8 @@ export class MenuComponent {
     {ruta: '/torneos/list', texto: 'Torneos', childrenRouting: [] }, 
     {ruta: '/federaciones/list', texto: 'Federaciones', childrenRouting: [] }, 
     {ruta: '/departamentos/list', texto: 'Departamentos', childrenRouting: [] },
+    {ruta: '/ciudades/list', texto: 'Ciudades', childrenRouting: [] },
     {ruta: '/empleados/list', texto: 'Empleados', childrenRouting: [] } ];
-
 
   getValue(txt: string) {
     this.txtMin = txt.toLowerCase();

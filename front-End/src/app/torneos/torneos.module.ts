@@ -5,6 +5,7 @@ import { TorneosRoutingModule } from './torneos-routing.module';
 import { AddTorneoComponent } from './pages/add-torneo/add-torneo.component';
 import { TorneoComponent } from './pages/torneo/torneo.component';
 import { ListComponent } from './pages/list/list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ListComponent } from './pages/list/list.component';
   ],
   imports: [
     CommonModule,
-    TorneosRoutingModule
+    TorneosRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class TorneosModule { }

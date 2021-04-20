@@ -1,7 +1,7 @@
 <h1>Empleados List</h1>
 <br>
 
-<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px">
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
 
     <table class="table table-striped">
         <thead>
@@ -11,6 +11,7 @@
                 <th scope="col"> DNI </th>
                 <th scope="col"> Direccion </th>
                 <th scope="col"> Telefono </th>
+                <th scope="col"> Departamento </th>
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
@@ -23,6 +24,7 @@
                 <td>{{ empleado.dni }}</td>
                 <td>{{ empleado.direccion }}</td>
                 <td>{{ empleado.telefono }}</td>
+             <!--   <td>{{ empleado.departamento.nombre }}</td>-->
                 <td><button [routerLink]="['/empleados',empleado.cod_emp]" type="button" class="btn btn-primary">Más información</button></td>
                 <td><button [routerLink]="['/empleados/edit',empleado.cod_emp]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>

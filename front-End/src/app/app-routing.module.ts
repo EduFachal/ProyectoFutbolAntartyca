@@ -26,6 +26,10 @@ const routes: Routes = [{
   loadChildren: () => import('./torneos/torneos.module').then(m => m.TorneosModule)
 },
 {
+  path:'ciudades',
+  loadChildren: () => import('./ciudades/ciudades.module').then(m => m.CiudadesModule)
+},
+{
   path: '**',
   redirectTo: '404'
 }

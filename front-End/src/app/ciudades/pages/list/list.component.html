@@ -1,0 +1,25 @@
+<h1>Ciudades List</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nombre </th>
+                <th scope="col"> Informacion </th>
+                <th scope="col"> Edicion </th>
+            </tr>
+        </thead>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30"
+        *ngFor="let ciudad of ciudades">
+            <tr>
+                <td>{{ ciudad.cod_ciudad }}</td>
+                <td>{{ ciudad.nombre }}</td>
+                <td><button [routerLink]="['/ciudades',ciudad.cod_ciudad]" type="button" class="btn btn-primary">Mas información</button></td>
+                <td><button [routerLink]="['/ciudades/edit',ciudad.cod_ciudad]" type="button" class="btn btn-dark">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

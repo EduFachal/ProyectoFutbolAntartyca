@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { Departamento } from '../../interfaces/departamento';
 import { DepartamentosService } from '../../service/departamentos.service';
 
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
   constructor(private departamentosService: DepartamentosService) { }
 
   ngOnInit(): void {
-    this.departamentosService.getDepartamentos().subscribe(departamentos =>this.departamentos = departamentos)
+    this.departamentosService.getDepartamentos().subscribe(resp =>this.departamentos = resp)
   }
 
 }

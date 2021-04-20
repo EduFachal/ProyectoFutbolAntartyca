@@ -1,1 +1,24 @@
-<p>empleado works!</p>
+<div cols=1 *ngIf="!empleado; else divEmpleado">
+
+</div>
+    <ng-template #divEmpleado>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+            <div fxFlex="50">
+                <h1> {{ empleado.nombre}}</h1>
+                <br>
+            </div>
+            <div fxFlex="50">
+                <h1>{{ empleado.dni }}</h1>
+                <br><br>
+                <ul>
+                    <li> {{ empleado.cod_emp }}</li>
+                    <li> {{ empleado.direccion }}</li>
+                    <li> {{ empleado.telefono }}</li>
+                </ul>
+                <br>
+                <button class="btn btn-warning" [routerLink]="['/empleados/list']">
+                    Ir atrás
+                </button>
+            </div>
+        </div>
+    </ng-template>

@@ -26,6 +26,7 @@ export class AddDepartamentoComponent implements OnInit {
     nombre: '',
     descripcion: '',
     federacion: this.federacion,
+    empleados: []
   }
 
   myForm: FormGroup = this.fb.group({

@@ -1,1 +1,22 @@
-<p>torneo works!</p>
+<div cols=1 *ngIf="!torneo; else divTorneo">
+
+</div>
+    <ng-template #divTorneo>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+            <div fxFlex="50">
+                <h1> {{ torneo.nombre}}</h1>
+                <br>
+            </div>
+            <div fxFlex="50">
+                <br><br>
+                <ul>
+                    <li> {{ torneo.cod_torneo }}</li>
+                    <li> {{ torneo.descripcion }}</li>
+                </ul>
+                <br>
+                <button class="btn btn-warning" [routerLink]="['/torneos/list']">
+                    Ir atrás
+                </button>
+            </div>
+        </div>
+    </ng-template>

@@ -3,5 +3,5 @@ export interface Empleado {
 	dni: string,
 	nombre: string,
 	direccion: string,
-	telefono: string
+	telefono: string,
 }

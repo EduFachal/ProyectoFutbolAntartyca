@@ -22,7 +22,6 @@ export class DepartamentoComponent implements OnInit {
       switchMap(({id}) => this.departamentoService.getDepartamentoById(id))
     )
     .subscribe( departamento => this.departamento = departamento);
-    
   }
 
 }
