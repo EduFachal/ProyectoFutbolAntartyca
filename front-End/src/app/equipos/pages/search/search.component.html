@@ -1,0 +1,75 @@
+<div class="row mt-5" *ngIf="equipo; else divEquipo">
+    <h1>Buscar equipo</h1>
+    <div class="col-md-6 col-sm-12 mx-auto">
+        <form autocomplete="off" [formGroup]="myForm">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="nombre_equipo"
+                        placeholder="Introduzca un nombre" [(ngModel)]="equipo.nombre_equipo">
+                    <span class="form-text text-danger" *ngIf="validField('nombre_equipo')">Nombre no puede ir
+                        vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="direccion"
+                        placeholder="Introduzca dirección del equipo" [(ngModel)]="equipo.direccion">
+                    <span class="form-text text-danger" *ngIf="validField('direccion')">Direccion no puede ir
+                        vacio</span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Fecha de fundación</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="fecha_fundacion"
+                        placeholder="Introduzca una fecha" [(ngModel)]="equipo.fecha_fundacion">
+                    <span class="form-text text-danger" *ngIf="validField('fecha_fundacion')">Fecha no puede estar
+                        vacio</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end" (click)="buscarEquipo()"
+                        (keyup.enter)="buscarEquipo()" [disabled]="myForm.invalid">
+                        Guardar cambio
+                    </button>
+                </div>
+            </div>
+
+        </form>
+        <br><br>
+    </div>
+</div>
+<ng-template #divEquipo>
+    <div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoyutGap="20px" class="text-center">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> ID </th>
+                    <th scope="col"> Nombre </th>
+                    <th scope="col"> Direccion </th>
+                    <th scope="col"> Fecha de fundación </th>
+                    <th scope="col"> Informacion </th>
+                    <th scope="col"> Edicion </th>
+                </tr>
+            </thead>
+            <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30">
+                <tr>
+                    <td>{{ equipo.cod_equipo }}</td>
+                    <td>{{ equipo.nombre_equipo }}</td>
+                    <td>{{ equipo.direccion }}</td>
+                    <td>{{ equipo.fecha_fundacion }}</td>
+                    <td><button [routerLink]="['/equipos',equipo.cod_equipo]" type="button" class="btn btn-primary">Info
+                            Equipo</button></td>
+                    <td><button [routerLink]="['/equipos/edit',equipo.cod_equipo]" type="button"
+                            class="btn btn-dark">Info
+                            Equipo</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

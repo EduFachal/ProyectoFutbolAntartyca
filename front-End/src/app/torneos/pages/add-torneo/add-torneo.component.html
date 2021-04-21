@@ -34,6 +34,16 @@
                 </div>
             </div>
 
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Ciudad</label>
+                <br><br>
+                <select formControlName="nombre_ciudad" class="mb-3 row" [(ngModel)]="torneo.ciudad.cod_ciudad"> 
+                    <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad.cod_ciudad">
+                        {{ciudad.nombre}}
+                    </option>
+                </select>
+            </div>
+
             <div class="row">
                 <div class="col">
                     <button type="submit"

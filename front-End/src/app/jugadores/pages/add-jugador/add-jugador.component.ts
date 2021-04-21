@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Equipo } from 'src/app/equipos/interfaces/equipo';
+import { EquiposService } from 'src/app/equipos/service/equipos.service';
 import { Jugador } from '../../interfaces/jugador.interface';
 import { JugadoresService } from '../../service/jugadores.service';
 
@@ -17,11 +18,15 @@ export class AddJugadorComponent implements OnInit {
   puestos: string[]=['Delantero','Centrocampista','Defensa','Portero'];
 
   equipo:Equipo={
-    cod_equipo : '1',
+    cod_equipo : '',
     nombre_equipo : '',
     direccion : '',
-    fecha_fundacion : ''
+    fecha_fundacion : '',
+    jugadores:[],
+    torneos:[],
   }
+
+  equipos: Equipo[] = [];
 
   jugador: Jugador={
     cod_jugador: '',
@@ -37,8 +42,8 @@ export class AddJugadorComponent implements OnInit {
 
   myForm: FormGroup = this.fb.group({
     nombre:['',[Validators.required,Validators.minLength(3)]],
-    equipo:['',[Validators.required,Validators.minLength(3)]],
     telefono:['',[Validators.required, Validators.minLength(0)]],
+    nombre_equipo:['',[Validators.required, Validators.minLength(0)]],
     puesto:['',[Validators.required, Validators.minLength(0)]],
     goles:[0,[Validators.required, Validators.minLength(0)]],
     altura:[0,[Validators.required, Validators.minLength(0)]],
@@ -47,15 +52,17 @@ export class AddJugadorComponent implements OnInit {
 
 
   constructor(private jugadorService : JugadoresService,
+              private equipoService : EquiposService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private fb : FormBuilder) { }
 
   ngOnInit(): void {
+    this.equipoService.getEquipos().subscribe(resp =>this.equipos = resp)
     if(!this.router.url.includes('edit')){
       return;
     }
-  
+     
     this.activatedRoute.params
     .pipe(
       switchMap(({id}) => this.jugadorService.getJugadorById(id))
@@ -63,9 +70,9 @@ export class AddJugadorComponent implements OnInit {
     .subscribe( jugador => this.jugador = jugador);
     this.myForm.reset({
       nombre: '',
-      equipo: '',
       telefono: '',
       puesto: '',
+      nombre_equipo:'',
       goles: 0,
       altura: 0,
       tarjetas: 0,
@@ -74,7 +81,6 @@ export class AddJugadorComponent implements OnInit {
   }
 
   save() {
-
     if (this.jugador.cod_jugador) {
       this.jugadorService.updateJugador(this.jugador)
         .subscribe(resp => { 
@@ -82,6 +88,8 @@ export class AddJugadorComponent implements OnInit {
     } else {
       this.jugador = {...this.jugador,...this.myForm.value}
       this.jugador.cod_jugador="1";
+
+      this.equipo.cod_equipo=this.myForm.get('nombre_equipo')?.value;
       this.jugador.equipo = this.equipo;
       this.jugadorService.addJugador(this.jugador)
         .subscribe(resp => { 

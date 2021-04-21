@@ -14,8 +14,8 @@
                 <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let torneo of torneos">
-            <tr>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30">
+            <tr *ngFor="let torneo of torneos">
                 <td>{{ torneo.cod_torneo}}</td>
                 <td>{{ torneo.nombre}}</td>
                 <td>{{ torneo.descripcion}}</td>

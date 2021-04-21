@@ -12,9 +12,8 @@
                 <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30"
-        *ngFor="let ciudad of ciudades">
-            <tr>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" >
+            <tr *ngFor="let ciudad of ciudades">
                 <td>{{ ciudad.cod_ciudad }}</td>
                 <td>{{ ciudad.nombre }}</td>
                 <td><button [routerLink]="['/ciudades',ciudad.cod_ciudad]" type="button" class="btn btn-primary">Mas información</button></td>

@@ -16,9 +16,8 @@
                 <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" 
-        *ngFor="let empleado of empleados">
-            <tr>
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30" >
+            <tr *ngFor="let empleado of empleados">
                 <td>{{ empleado.cod_emp }}</td>
                 <td>{{ empleado.nombre }}</td>
                 <td>{{ empleado.dni }}</td>
@@ -31,4 +30,3 @@
         </tbody>
     </table>
 </div>
-<!--<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>-->

@@ -5,7 +5,7 @@
         <small>{{ jugador.nombre }}</small>
     </h1>
 
-    <div class="col-md-6 col-sm-12 mx-auto">
+    <div class="col-md-8 col-sm-12 mx-auto">
         <form autocomplete="off" [formGroup]="myForm">
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
@@ -21,17 +21,13 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Equipo</label>
-                <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="equipo"
-                            placeholder="Introduzca el nombre de un equipo"
-                            [(ngModel)]="jugador.equipo.nombre_equipo">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('nombre')"
-                    >Nombre no puede ir vacio</span>
-                </div>
+                <label class="col-sm-2 col-form-label">Nombre de Equipo</label>
+                <br><br>
+                <select formControlName="nombre_equipo" class="mb-3 row"  [(ngModel)]="jugador.equipo.cod_equipo"> 
+                    <option *ngFor="let equipo of equipos" [ngValue]="equipo.cod_equipo">
+                        {{equipo.nombre_equipo}}
+                    </option>
+                </select>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Telefono</label>
@@ -97,40 +93,8 @@
                     </div>
                 </div>
             </div>
-            <!--            <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Activo</label>
-                <div class="col-sm-9">
-                    <div class="form-check">
-                        <input class="form-check-input" 
-                        type="radio" 
-                        value="S"
-                        formControlName="activoSi" 
-                        id="siRadio">
-                        <label class="form-check-label" for="siRadio">Si</label>
-                    </div>
-        
-                    <div class="form-check">
-                        <input class="form-check-input" 
-                        type="radio" 
-                        value="N" 
-                        formControlName="activoNo"
-                        id="noRadio" 
-                        >
-                        <label class="form-check-label" for="noRadio">No</label>
-                    </div>
-                </div>
-            </div>-->
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Puesto</label>
-            <!--    <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="puesto"
-                            placeholder="Introduzca puesto de juego">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('puesto')"
-                    >Tiene que jugar en una posicion</span>
-                </div>-->
                 <br><br>
                 <select formControlName="puesto" [(ngModel)]="jugador.puesto"> 
                     <option *ngFor="let puesto of puestos" [ngValue]="puesto">

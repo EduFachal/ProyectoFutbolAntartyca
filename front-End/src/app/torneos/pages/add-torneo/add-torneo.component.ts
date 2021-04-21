@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Ciudad } from 'src/app/ciudades/interfaces/ciudad';
+import { CiudadesService } from 'src/app/ciudades/service/ciudades.service';
 import { Torneo } from '../../interfaces/torneo';
 import { TorneosService } from '../../service/torneos.service';
 
@@ -13,23 +15,36 @@ import { TorneosService } from '../../service/torneos.service';
 })
 export class AddTorneoComponent implements OnInit {
 
+  ciudad: Ciudad = {
+    cod_ciudad: '1',
+    nombre: '',
+  }
+
+  ciudades: Ciudad[] = [];
+
   torneo: Torneo={
     cod_torneo: '',
     nombre: '',
-    descripcion: ''
+    descripcion: '',
+    ciudad: this.ciudad,
+    equipos:[]
   }
 
   myForm: FormGroup = this.fb.group({
     nombre:['',[Validators.required,Validators.minLength(3)]],
-    descripcion:['',[Validators.required,Validators.minLength(3)]]
+    descripcion:['',[Validators.required,Validators.minLength(3)]],
+    nombre_ciudad:['',[Validators.required,Validators.minLength(3)]],
   })
 
   constructor(private torneoService: TorneosService,
+    private ciudadService: CiudadesService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.ciudadService.getCiudades().subscribe(resp =>this.ciudades = resp)
+
     if (!this.router.url.includes('edit')) {
       return;
     }

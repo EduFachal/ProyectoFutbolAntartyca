@@ -17,7 +17,9 @@ export class AddEquipoComponent implements OnInit {
     cod_equipo: '',
     nombre_equipo: '',
     direccion: '',
-    fecha_fundacion: ''
+    fecha_fundacion: '',
+    jugadores:[],
+    torneos:[]
   }
 
   myForm: FormGroup = this.fb.group({

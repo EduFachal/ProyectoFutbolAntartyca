@@ -63,7 +63,7 @@ export class AddCiudadComponent implements OnInit {
   deleteCiudad() {
     this.ciudadService.deleteCiudad(this.ciudad)
       .subscribe(resp => {
-        this.router.navigate(['/cudades/list']);
+        this.router.navigate(['/ciudades/list']);
       })
   }
 

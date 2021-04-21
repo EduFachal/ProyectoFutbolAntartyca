@@ -16,9 +16,8 @@
                 <th scope="col"> Edicion </th>
             </tr>
         </thead>
-        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30"
-        *ngFor="let departamento of departamentos">
-            <tr th:each="player : ${players}">
+        <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30">
+            <tr *ngFor="let departamento of departamentos">
                 <td>{{ departamento.cod_depart }}</td>
                 <td>{{ departamento.nombre }}</td>
                 <td>{{ departamento.descripcion }}</td>

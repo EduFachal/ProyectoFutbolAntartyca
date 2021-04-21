@@ -33,6 +33,24 @@
                     >Direccion no puede ir vacio</span>
                 </div>
             </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Ciudad</label>
+                <br><br>
+                <select formControlName="nombre_ciudad" class="mb-3 row" [(ngModel)]="departamento.ciudad.cod_ciudad"> 
+                    <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad.cod_ciudad">
+                        {{ciudad.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">Nombre de Federacion</label>
+                <br><br>
+                <select formControlName="nombre_federac" class="mb-3 row" [(ngModel)]="departamento.federacion.cod_federacion"> 
+                    <option *ngFor="let federacion of federaciones" [ngValue]="federacion.cod_federacion">
+                        {{federacion.cif}}
+                    </option>
+                </select>
+            </div>
             <div class="row">
                 <div class="col">
                     <button type="submit"

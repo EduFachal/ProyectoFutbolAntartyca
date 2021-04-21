@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Ciudad } from 'src/app/ciudades/interfaces/ciudad';
 import { Departamento } from 'src/app/departamentos/interfaces/departamento';
+import { DepartamentosService } from 'src/app/departamentos/service/departamentos.service';
 import { Federacion } from 'src/app/federaciones/interfaces/federacion';
 import { Empleado } from '../../interfaces/empleado';
 import { EmpleadosService } from '../../service/empleados.service';
@@ -15,7 +17,13 @@ import { EmpleadosService } from '../../service/empleados.service';
 })
 export class AddEmpleadoComponent implements OnInit {
 
-  /*federacion: Federacion={
+  ciudad: Ciudad = {
+    cod_ciudad: '1',
+    nombre: '',
+  }
+
+
+  federacion: Federacion={
     cod_federacion:'2',
     cif: '',
     direccion: '',
@@ -27,8 +35,11 @@ export class AddEmpleadoComponent implements OnInit {
     nombre: '',
     descripcion: '',
     federacion: this.federacion,
+    ciudad: this.ciudad,
     empleados:[]
-  }*/
+  }
+
+  departamentos: Departamento[] = [];
 
   empleado: Empleado = {
     cod_emp: '',
@@ -36,7 +47,7 @@ export class AddEmpleadoComponent implements OnInit {
 	  dni: '',
 	  direccion: '',
 	  telefono: '',
-	//  departamento: this.departamento,
+	  departamento: this.departamento,
   }
 
   myForm: FormGroup = this.fb.group({
@@ -44,14 +55,21 @@ export class AddEmpleadoComponent implements OnInit {
     dni:['',[Validators.required,Validators.minLength(3)]],
     direccion:['',[Validators.required,Validators.minLength(3)]],
     telefono:['',[Validators.required, Validators.minLength(0)]],
+    nombre_depart:['',[Validators.required, Validators.minLength(0)]],
   })
 
   constructor(private empleadoService: EmpleadosService,
+    private departamentoService: DepartamentosService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.departamentoService.getDepartamentos().subscribe(resp =>this.departamentos = resp)
+    if(!this.router.url.includes('edit')){
+      return;
+    }
+
     if (!this.router.url.includes('edit')) {
       return;
     }
@@ -80,6 +98,8 @@ export class AddEmpleadoComponent implements OnInit {
     } else {
       this.empleado = { ...this.empleado, ...this.myForm.value }
       this.empleado.cod_emp = "1";
+      this.departamento.cod_depart = this.myForm.get('nombre_depart')?.value
+      this.empleado.departamento = this.departamento;
       this.empleadoService.addEmpleado(this.empleado)
         .subscribe(resp => {
           this.router.navigate(['/empleados/list'])
