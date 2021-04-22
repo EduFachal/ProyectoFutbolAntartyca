@@ -1,98 +1,84 @@
 <div class="row mt-5">
-    <h1>
+    <h1 class="d-flex justify-content-around">
         {{ empleado.cod_emp ? 'Edit' : 'New'}}
         Empleado
         <small>{{ empleado.nombre }}</small>
     </h1>
 
-    <div class="col-md-6 col-sm-12 mx-auto">
+    <div class="col-lg-8 col-md-12 col-sm-12 mx-auto mt-5">
         <form autocomplete="off" [formGroup]="myForm">
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="nombre"
-                            placeholder="Introduzca un nombre"
-                            [(ngModel)]="empleado.nombre">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('nombre')"
-                    >Nombre no puede ir vacio</span>
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Introduzca un nombre"
+                        [(ngModel)]="empleado.nombre">
+                    <span class="form-text text-danger" *ngIf="validField('nombre')">Nombre no puede ir vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">DNI</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="dni"
-                            placeholder="Introduzca DNI"
-                            [(ngModel)]="empleado.dni">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('dni')"
-                    >DNI no puede ir vacio</span>
+                    <input type="text" class="form-control" formControlName="dni" placeholder="Introduzca DNI"
+                        [(ngModel)]="empleado.dni">
+                    <span class="form-text text-danger" *ngIf="validField('dni')">DNI no puede ir vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Direccion</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="direccion"
-                            placeholder="Introduzca dirección"
-                            [(ngModel)]="empleado.direccion">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('direccion')"
-                    >Direccion no puede ir vacio</span>
+                    <input type="text" class="form-control" formControlName="direccion"
+                        placeholder="Introduzca dirección" [(ngModel)]="empleado.direccion">
+                    <span class="form-text text-danger" *ngIf="validField('direccion')">Direccion no puede ir
+                        vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Telefono</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="telefono"
-                            placeholder="Introduzca telefono del empleado"
-                            [(ngModel)]="empleado.telefono">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('telefono')"
-                    >Telefono no puede ir vacio</span>
+                    <input type="text" class="form-control" formControlName="telefono"
+                        placeholder="Introduzca telefono del empleado" [(ngModel)]="empleado.telefono">
+                    <span class="form-text text-danger" *ngIf="validField('telefono')">Telefono no puede ir vacio</span>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Nombre de Departamento</label>
-                <br><br>
-                <select formControlName="nombre_depart" class="mb-3 row" [(ngModel)]="empleado.departamento.cod_depart"> 
+            <div class="mb-3 row mt-4">
+                <label class="col-sm-3 control-label">Nombre de Departamento</label>
+                <select formControlName="nombre_depart"class="mb-2 col-md-6 col-sm-8" [(ngModel)]="empleado.departamento.cod_depart">
                     <option *ngFor="let departamento of departamentos" [ngValue]="departamento.cod_depart">
                         {{departamento.nombre}}
                     </option>
                 </select>
             </div>
-            <div class="row">
-                <div class="col">
-                    <button type="submit"
-                            class="btn btn-primary float-end"
-                            (click)="saveEmpleado()"
-                            (keyup.enter)="saveEmpleado()"
-                            [disabled]="myForm.invalid">
-                            Guardar cambio
+            <div class="row mt-5 col-md-12 col-sm-12">
+                <div class="d-flex justify-content-around">
+                    <button type="submit" class="btn btn-primary col-md-6 col-sm-12" (click)="saveEmpleado()"
+                        (keyup.enter)="saveEmpleado()" [disabled]="myForm.invalid">
+                        Guardar cambio
                     </button>
                 </div>
             </div>
 
         </form>
         <br><br>
-</div>
-<br><br><br>
-<div>
-    <div class="d-flex justify-content-around">
-        <button class="btn btn-warning" [routerLink]="['/empleados/list']">
-            Volver
-        </button>
-
-        <button class="btn btn-danger" (click)="deleteEmpleado()" *ngIf="empleado.cod_emp">
-            Borrar empleado
-        </button>
     </div>
-</div>
+    <br><br><br>
+    <div>
+        <div class="d-flex justify-content-around" *ngIf="empleado.cod_emp; else divButtons">
+            <div class="row col-md-7 col-sm-11">
+                <button class="btn btn-danger col-md-6 col-sm-12 col-xs-12 mb-5" (click)="deleteEmpleado()">
+                    Borrar jugador
+                </button>
+
+                <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/empleados/list']">
+                    Volver
+                </button>
+            </div>
+        </div>
+        <ng-template #divButtons>
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/empleados/list']">
+                    Volver
+                </button>
+            </div>
+        </ng-template>
+    </div>
 </div>

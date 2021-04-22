@@ -15,7 +15,8 @@ export class AddCiudadComponent implements OnInit {
 
   ciudad: Ciudad={
     cod_ciudad: '',
-    nombre: ''
+    nombre: '',
+    torneos:[]
   }
 
   myForm: FormGroup = this.fb.group({

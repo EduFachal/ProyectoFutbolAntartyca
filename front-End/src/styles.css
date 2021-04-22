@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+#background{
+    background-image: url('./assets/background.jpg');
+    width: 1598px;
+    height: 888px;
+    background-size: cover;
+}
+
+h1,h2,th,form{
+    color: white;
+}
+
+td,p{
+    color: orange;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+input,select{
+    opacity: 0.8;
+}
+
+
+.listColor{
+    background-color: rgba(70,71,62,0.2); 
+    color: white;
+}

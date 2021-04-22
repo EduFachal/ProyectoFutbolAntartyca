@@ -10,16 +10,14 @@
             <div fxFlex="50">
                 <h1>{{ jugador.nombre }}</h1>
                 <br><br>
-                <ul>
-                    <li> {{ jugador.telefono }}</li>
-                    <li> {{ jugador.puesto  }}</li>
-                    <li> {{ jugador.goles  }}</li>
-                    <li> {{ jugador.altura  }}</li>
-                    <li> {{ jugador.tarjetas  }}</li>
-                    <li> {{ jugador.activo  }}</li>
-                </ul>
+                    <p> {{ jugador.telefono }}</p>
+                    <p> {{ jugador.puesto  }}</p>
+                    <p> {{ jugador.goles  }}</p>
+                    <p> {{ jugador.altura  }}</p>
+                    <p> {{ jugador.tarjetas  }}</p>
+                    <p> {{ jugador.activo  }}</p>
                 <br>
-                <button class="btn btn-warning" [routerLink]="['/jugadores/list']">
+                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
                     Ir atrás
                 </button>
             </div>

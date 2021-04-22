@@ -1,11 +1,11 @@
 <div class="row mt-5">
-    <h1>
+    <h1 class="d-flex justify-content-around"> 
         {{ equipo.cod_equipo ? 'Edit' : 'New'}}
         Equipo
         <small>{{ equipo.nombre_equipo }}</small>
     </h1>
 
-    <div class="col-md-6 col-sm-12 mx-auto">
+    <div class="col-lg-8 col-md-12 col-sm-12 mx-auto mt-5">
         <form autocomplete="off" [formGroup]="myForm">
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
@@ -47,10 +47,10 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col">
+            <div class="row mt-5 col-md-12 col-sm-12">
+                <div class="d-flex justify-content-around">
                     <button type="submit"
-                            class="btn btn-primary float-end"
+                    class="btn btn-primary col-md-6 col-sm-12"
                             (click)="saveEquipo()"
                             (keyup.enter)="saveEquipo()"
                             [disabled]="myForm.invalid">
@@ -64,14 +64,23 @@
 </div>
 <br><br><br>
 <div>
-    <div class="d-flex justify-content-around">
-        <button class="btn btn-warning" [routerLink]="['/equipos/list']">
-            Volver
-        </button>
+    <div class="d-flex justify-content-around" *ngIf="equipo.cod_equipo; else divButtons">
+        <div class="row col-md-7 col-sm-11">
+            <button class="btn btn-danger col-md-6 col-sm-12 col-xs-12 mb-5" (click)="deleteEquipo()">
+                Borrar jugador
+            </button>
 
-        <button class="btn btn-danger" (click)="deleteEquipo()" *ngIf="equipo.cod_equipo">
-            Borrar equipo
-        </button>
+            <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/equipos/list']">
+                Volver
+            </button>
+        </div>
     </div>
+    <ng-template #divButtons>
+        <div class="d-flex justify-content-around">
+            <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/equipos/list']">
+                Volver
+            </button>
+        </div>
+    </ng-template>
 </div>
 </div>

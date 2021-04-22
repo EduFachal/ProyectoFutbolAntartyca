@@ -20,6 +20,7 @@ export class AddDepartamentoComponent implements OnInit {
   ciudad: Ciudad = {
     cod_ciudad: '52',
     nombre: '',
+    torneos:[]
   }
 
   ciudades: Ciudad[] = [];

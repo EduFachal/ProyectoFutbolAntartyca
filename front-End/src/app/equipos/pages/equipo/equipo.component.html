@@ -10,12 +10,12 @@
             <div fxFlex="50">
                 <h1>{{ equipo.nombre_equipo }}</h1>
                 <br><br>
-                <ul>
-                    <li> {{ equipo.direccion }}</li>
-                    <li> {{ equipo.fecha_fundacion  }}</li>
-                </ul>
+                    <p> {{ equipo.direccion }}</p>
+                    <p> {{ equipo.fecha_fundacion  }}</p>
+                    <p> {{ equipo.jugadores  }}</p>
+                    <p> Numero torneos: {{ equipo.torneos.length  }}</p>
                 <br>
-                <button class="btn btn-warning" [routerLink]="['/equipos/list']">
+                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/equipos/list']">
                     Ir atrás
                 </button>
             </div>

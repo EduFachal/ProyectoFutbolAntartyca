@@ -1,24 +1,24 @@
 <div cols=1 *ngIf="!departamento; else divDepartamento">
 
 </div>
-    <ng-template #divDepartamento>
-        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
-            <div fxFlex="50">
-                <h1> {{ departamento.nombre}}</h1>
-                <br>
-            </div>
-            <div fxFlex="50">
-                <h1>{{ departamento.nombre }}</h1>
-                <br><br>
-                <ul>
-                    <li> {{ departamento.descripcion }}</li>
-                    <li> {{ departamento.federacion  }}</li>
-                    <li> {{ departamento.empleados  }}</li>
-                </ul>
-                <br>
-                <button class="btn btn-warning" [routerLink]="['/departamentos/list']">
-                    Ir atrás
-                </button>
-            </div>
+<ng-template #divDepartamento>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+        <div fxFlex="50">
+            <h1> {{ departamento.nombre}}</h1>
+            <br>
         </div>
-    </ng-template>
+        <div fxFlex="50">
+            <h1>{{ departamento.nombre }}</h1>
+            <br><br>
+            <p> {{ departamento.descripcion }}</p>
+            <p> {{ departamento.ciudad }}</p>
+            <p> {{ departamento.federacion.direccion }}</p>
+            <p> {{ departamento.federacion.cif }}</p>
+            <p> Numero de empleados : {{ departamento.empleados.length }}</p>
+            <br>
+            <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/departamentos/list']">
+                Ir atrás
+            </button>
+        </div>
+    </div>
+</ng-template>

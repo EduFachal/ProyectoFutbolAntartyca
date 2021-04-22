@@ -1,29 +1,24 @@
 <div class="row mt-5">
-    <h1>
+    <h1 class="d-flex justify-content-around">
         {{ jugador.cod_jugador ? 'Edit' : 'New'}}
         Jugador
         <small>{{ jugador.nombre }}</small>
     </h1>
 
-    <div class="col-md-8 col-sm-12 mx-auto">
+    <div class="col-lg-8 col-md-12 col-sm-12 mx-auto mt-5">
         <form autocomplete="off" [formGroup]="myForm">
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="nombre"
-                            placeholder="Introduzca un nombre"
-                            [(ngModel)]="jugador.nombre">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('nombre')"
-                    >Nombre no puede ir vacio</span>
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Introduzca un nombre"
+                        [(ngModel)]="jugador.nombre">
+                    <span class="form-text text-danger" *ngIf="validField('nombre')">Nombre no puede ir vacio</span>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Nombre de Equipo</label>
-                <br><br>
-                <select formControlName="nombre_equipo" class="mb-3 row"  [(ngModel)]="jugador.equipo.cod_equipo"> 
+            <div class="mb-3 row mt-4">
+                <label class="col-sm-3 control-label">Nombre de Equipo</label>
+                <select formControlName="nombre_equipo" class="mb-2 col-md-6 col-sm-8"
+                    [(ngModel)]="jugador.equipo.cod_equipo">
                     <option *ngFor="let equipo of equipos" [ngValue]="equipo.cod_equipo">
                         {{equipo.nombre_equipo}}
                     </option>
@@ -32,71 +27,50 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Telefono</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="telefono"
-                            placeholder="Introduzca numero de telefono"
-                            [(ngModel)]="jugador.telefono">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('telefono')"
-                    >Telefono no puede estar vacio</span>
+                    <input type="text" class="form-control" formControlName="telefono"
+                        placeholder="Introduzca numero de telefono" [(ngModel)]="jugador.telefono">
+                    <span class="form-text text-danger" *ngIf="validField('telefono')">Telefono no puede estar
+                        vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Goles</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="goles"
-                            placeholder="Introduzca numero de goles"
-                            [(ngModel)]="jugador.goles">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('goles')"
-                    >Goles no puede estar vacio</span>
+                    <input type="text" class="form-control" formControlName="goles"
+                        placeholder="Introduzca numero de goles" [(ngModel)]="jugador.goles">
+                    <span class="form-text text-danger" *ngIf="validField('goles')">Goles no puede estar vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Altura</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="altura"
-                            placeholder="Introduzca una altura"
-                            [(ngModel)]="jugador.altura">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('altura')"
-                    >Altura no puede estar vacio</span>
+                    <input type="text" class="form-control" formControlName="altura" placeholder="Introduzca una altura"
+                        [(ngModel)]="jugador.altura">
+                    <span class="form-text text-danger" *ngIf="validField('altura')">Altura no puede estar vacio</span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label">Tarjetas</label>
                 <div class="col-sm-10">
-                    <input type="text"
-                            class="form-control"
-                            formControlName="tarjetas"
-                            placeholder="Introduzca numero de telefono"
-                            [(ngModel)]="jugador.tarjetas">
-                    <span class="form-text text-danger"
-                    *ngIf="validField('tarjetas')"
-                    >Tarjetas no puede estar vacio</span>
+                    <input type="text" class="form-control" formControlName="tarjetas"
+                        placeholder="Introduzca numero de telefono" [(ngModel)]="jugador.tarjetas">
+                    <span class="form-text text-danger" *ngIf="validField('tarjetas')">Tarjetas no puede estar
+                        vacio</span>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Activo</label>
                 <div class="col-sm-9">
                     <div class="form-check form-switch mt-2">
-                        <input class="form-check-input" 
-                        type="checkbox"
-                        formControlName="activo">
+                        <input class="form-check-input" type="checkbox" formControlName="activo">
                         <label class="form-check-label" for="flexSwitch">
                             Seleccione si se encuentra en activo</label>
                     </div>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label">Puesto</label>
-                <br><br>
-                <select formControlName="puesto" [(ngModel)]="jugador.puesto"> 
+            <div class="mb-3 row mt-4">
+                <label class="col-sm-3 control-label">Puesto</label>
+                <select formControlName="puesto" class="mb-2 col-md-6 col-sm-8" [(ngModel)]="jugador.puesto">
                     <option *ngFor="let puesto of puestos" [ngValue]="puesto">
                         {{puesto}}
                     </option>
@@ -104,31 +78,37 @@
             </div>
 
 
-            <div class="row">
-                <div class="col">
-                    <button type="submit"
-                            class="btn btn-primary float-end"
-                            (click)="save()"
-                            (keyup.enter)="save()"
-                            [disabled]="myForm.invalid">
-                            Guardar cambio
+            <div class="row mt-5 col-md-12 col-sm-12">
+                <div class="d-flex justify-content-around">
+                    <button type="submit" class="btn btn-primary col-md-6 col-sm-12" (click)="save()"
+                        (keyup.enter)="save()" [disabled]="myForm.invalid">
+                        Guardar cambio
                     </button>
                 </div>
             </div>
 
         </form>
         <br><br>
-</div>
-<br><br><br>
-<div>
-    <div class="d-flex justify-content-around">
-        <button class="btn btn-warning" [routerLink]="['/jugadores/list']">
-            Volver
-        </button>
-
-        <button class="btn btn-danger" (click)="deleteJug()" *ngIf="jugador.cod_jugador">
-            Borrar jugador
-        </button>
     </div>
-</div>
+    <br><br><br>
+    <div>
+        <div class="d-flex justify-content-around" *ngIf="jugador.cod_jugador; else divButtons">
+            <div class="row col-md-7 col-sm-11">
+                <button class="btn btn-danger col-md-6 col-sm-12 col-xs-12 mb-5" (click)="deleteJug()">
+                    Borrar jugador
+                </button>
+
+                <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
+                    Volver
+                </button>
+            </div>
+        </div>
+        <ng-template #divButtons>
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-warning col-md-6 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
+                    Volver
+                </button>
+            </div>
+        </ng-template>
+    </div>
 </div>

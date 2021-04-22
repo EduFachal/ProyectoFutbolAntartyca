@@ -10,13 +10,13 @@
             <div fxFlex="50">
                 <h1>{{ empleado.dni }}</h1>
                 <br><br>
-                <ul>
-                    <li> {{ empleado.cod_emp }}</li>
-                    <li> {{ empleado.direccion }}</li>
-                    <li> {{ empleado.telefono }}</li>
-                </ul>
+                    <p> {{ empleado.cod_emp }}</p>
+                    <p> {{ empleado.direccion }}</p>
+                    <p> {{ empleado.telefono }}</p>
+                    <p> {{ empleado.departamento.nombre }}</p>
+                    <p> {{ empleado.departamento.federacion.cif }}</p>
                 <br>
-                <button class="btn btn-warning" [routerLink]="['/empleados/list']">
+                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/empleados/list']">
                     Ir atrás
                 </button>
             </div>

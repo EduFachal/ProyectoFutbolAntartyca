@@ -20,6 +20,7 @@ export class AddEmpleadoComponent implements OnInit {
   ciudad: Ciudad = {
     cod_ciudad: '1',
     nombre: '',
+    torneos:[]
   }
 
 

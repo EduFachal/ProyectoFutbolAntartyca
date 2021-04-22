@@ -9,12 +9,10 @@
         <div fxFlex="50">
             <h1>{{ federacion.cif }}</h1>
             <br><br>
-            <ul>
-                <li> {{ federacion.cod_federacion }}</li>
-                <li> {{ federacion.telefono  }}</li>
-            </ul>
+                <p> {{ federacion.cod_federacion }}</p>
+                <p> {{ federacion.telefono  }}</p>
             <br>
-            <button class="btn btn-warning" [routerLink]="['/federaciones/list']">
+            <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/federaciones/list']">
                 Ir atrás
             </button>
         </div>

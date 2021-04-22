@@ -9,12 +9,14 @@
             </div>
             <div fxFlex="50">
                 <br><br>
-                <ul>
-                    <li> {{ torneo.cod_torneo }}</li>
-                    <li> {{ torneo.descripcion }}</li>
-                </ul>
+                <h3>
+                    ID Torneo : {{ torneo.cod_torneo }}
+                </h3><br><br>
+                <h3>
+                    Descripcion : {{ torneo.descripcion }}
+                </h3>
                 <br>
-                <button class="btn btn-warning" [routerLink]="['/torneos/list']">
+                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/torneos/list']">
                     Ir atrás
                 </button>
             </div>

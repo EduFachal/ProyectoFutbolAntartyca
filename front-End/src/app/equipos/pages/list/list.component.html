@@ -19,7 +19,7 @@
                 <td>{{ equipo.cod_equipo }}</td>
                 <td>{{ equipo.nombre_equipo }}</td>
                 <td>{{ equipo.direccion }}</td>
-                <td>{{ equipo.fecha_fundacion }}</td>
+                <td>{{ equipo.fecha_fundacion | date}}</td>
                 <td><button [routerLink]="['/equipos',equipo.cod_equipo]" type="button" class="btn btn-primary">Mas información</button></td>
                 <td><button [routerLink]="['/equipos/edit',equipo.cod_equipo]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>

@@ -8,6 +8,7 @@
             <tr>
                 <th scope="col"> ID </th>
                 <th scope="col"> Nombre </th>
+                <th scope="col"> Numeros de Torneos</th>
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
@@ -16,6 +17,7 @@
             <tr *ngFor="let ciudad of ciudades">
                 <td>{{ ciudad.cod_ciudad }}</td>
                 <td>{{ ciudad.nombre }}</td>
+                <td>{{ ciudad.torneos.length }}</td>
                 <td><button [routerLink]="['/ciudades',ciudad.cod_ciudad]" type="button" class="btn btn-primary">Mas información</button></td>
                 <td><button [routerLink]="['/ciudades/edit',ciudad.cod_ciudad]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>
