@@ -1,4 +1,3 @@
-import { Ciudad } from "src/app/ciudades/interfaces/ciudad";
 import { Equipo } from "src/app/equipos/interfaces/equipo";
 
 export interface Torneo {
@@ -7,4 +6,9 @@ export interface Torneo {
     descripcion: string,
     ciudad: Ciudad,
     equipos:Equipo[]
+}
+
+export interface Ciudad{
+    cod_ciudad: string,
+    nombre: string
 }

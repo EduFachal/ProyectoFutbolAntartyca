@@ -1,10 +1,10 @@
 <div class="col-lg-12 col-sm-12 mt-5 mr-3">
-    <h2 class="mt-3">Listado</h2>
+    <h2 class="mt-3" [routerLink]="['/jugadores/list']">Listado</h2>
     <hr>
 
     <ul class="list-group listColor">
-        <li *ngFor="let item of menu" class="list-group-item" [routerLink]="[item.ruta]" routerLinkActive="active" style="background-color: rgba(70,71,62,0.5); color: white;"
-            (click)="getValue(item.texto)">
+        <li *ngFor="let item of menu" class="list-group-item" [routerLink]="[item.ruta]" routerLinkActive="active"
+            style="background-color: rgba(70,71,62,0.5); color: white;" (click)="getValue(item.texto)">
             {{ item.texto }}
         </li>
     </ul>
@@ -12,11 +12,33 @@
     <h2 class="mt-3">Acciones</h2>
     <hr>
 
-    <ul class="list-group listColor" >
-        <li *ngFor="let child of rutaChild" class="list-group-item" [routerLink]="[child.rutaChildren]" style="background-color: rgba(70,71,62,0.5); color: white;"
-            routerLinkActive="active">
+    <ul class="list-group listColor">
+        <li *ngFor="let child of rutaChild" class="list-group-item" [routerLink]="[child.rutaChildren]"
+            style="background-color: rgba(70,71,62,0.5); color: white;" routerLinkActive="active">
             {{ child.textoChildren }}
         </li>
 
     </ul>
+</div>
+<div class="container mt-5">
+    <h1>Buscador Dinamico</h1>
+    <br><br>
+    <mat-form-field>
+        <mat-label>Jugador</mat-label>
+        <input type="text"
+        placeholder="Escoge jugador"
+        matInput 
+        (ngModel)="term"
+        [matAutocomplete]="auto" 
+        (input)="searching()"
+        style="color: white;" />
+        <mat-autocomplete #auto="matAutocomplete" 
+        autoActiveFirstOption 
+        (optionSelected)="optionSelected($event)">
+            <mat-option *ngFor="let jugador of jugadores"
+             [routerLink]="['/jugadores',jugador.cod_jugador]"
+            [value]="jugador.nombre">{{ jugador.nombre }}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
 </div>

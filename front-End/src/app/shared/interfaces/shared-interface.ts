@@ -8,3 +8,8 @@ export interface MenuRutasPrincipales {
     rutaChildren: string,
     textoChildren: string
   }
+
+  export interface Jugador {
+    cod_jugador: string,
+    nombre_jugador: string
+  }

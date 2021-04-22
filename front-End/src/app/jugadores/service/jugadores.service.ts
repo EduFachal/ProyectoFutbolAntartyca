@@ -17,6 +17,10 @@ export class JugadoresService {
     return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/jugadores`);
   }
 
+  getPrompts( term : string){
+    return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/jugadores?q=${ term }&_limit=6`);
+  }
+
   getJugadorById(id: string) {
     return this.http.get<Jugador>(`${this.baseUrl}/jugador/jugadores/${id}`);
   }
@@ -31,5 +35,13 @@ export class JugadoresService {
 
   deleteJugador(jugador: Jugador) {
     return this.http.get<Jugador>(`${this.baseUrl}/jugador/delete/${jugador.cod_jugador}`);
+  }
+
+  buscarJugadoresPorGoles(goles: string) {
+    return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/busquedaPorGoles/${goles}`);
+  }
+
+  buscarJugadoresPorFecha(fechaInicio : Date, fechaFin : Date){
+    return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/buscarEntreFechas/${fechaInicio}/${fechaFin}`);
   }
 }

@@ -73,7 +73,9 @@ export class AddDepartamentoComponent implements OnInit {
 
     this.myForm.reset({
       nombre: '',
-      descripcion: ''
+      descripcion: '',
+      nombre_federac:'',
+      nombre_ciudad:''
     })
   }
 

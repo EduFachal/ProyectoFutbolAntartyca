@@ -1,0 +1,55 @@
+<div class="row mt-5">
+    <h1 class="mb-5">BUSCADOR JUGADORES</h1>
+    <div class="col-md-6 col-sm-12 mx-auto">
+        <form autocomplete="off" [formGroup]="form">
+            <h1>Goles</h1>
+            <div class="mb-5 row">
+                <label class="col-sm-2 col-form-label">Goles</label>
+                <div class="col-sm-10">
+                    <input type="string" class="form-control" formControlName="goles"
+                        placeholder="Introduzca numero de goles">
+                </div>
+            </div>
+
+            <h1 class="mt-5 mb-2">Fecha</h1>
+            <div class="mt-3 row">
+                <label class="col-sm-2 col-form-label">Fecha inicio</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="fechaInicio"
+                        placeholder="Introduzca fecha inicio">
+                </div>
+            </div>
+            <div class="mt-3 row">
+                <label class="col-sm-2 col-form-label">Fecha fin</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="fechaFin"
+                        placeholder="Introduzca fecha fin">
+                </div>
+            </div>
+
+            <!--Botones para iniciar la busqueda, resetear el input y limpiar la tabla con los datos-->
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary col-md-6 col-sm-12 col-xs-12 mb-5 mt-5"
+                        (click)="buscarEquipo()" (keyup.enter)="buscarEquipo()" [disabled]="form.invalid">
+                        Buscar
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="reset" class="btn btn-danger col-md-6 col-sm-12 col-xs-12 mb-5 mt-5"
+                        (click)="limpiarTabla()">
+                        Limpiar tabla
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br><br>
+    </div>
+
+    <!-- En el caso de encontrar jugadores mostrará la lista con todos los jugadores-->
+    <div *ngIf="jugadores.length > 0">
+        <app-list></app-list>
+
+    </div>

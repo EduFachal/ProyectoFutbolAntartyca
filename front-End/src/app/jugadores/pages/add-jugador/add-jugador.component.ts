@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Equipo } from 'src/app/equipos/interfaces/equipo';
+//import { Equipo } from 'src/app/equipos/interfaces/equipo';
 import { EquiposService } from 'src/app/equipos/service/equipos.service';
-import { Jugador } from '../../interfaces/jugador.interface';
+import { Equipo, Jugador } from '../../interfaces/jugador.interface';
 import { JugadoresService } from '../../service/jugadores.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { JugadoresService } from '../../service/jugadores.service';
 export class AddJugadorComponent implements OnInit {
 
   puestos: string[]=['Delantero','Centrocampista','Defensa','Portero'];
-
+/*
   equipo:Equipo={
     cod_equipo : '',
     nombre_equipo : '',
@@ -24,6 +24,11 @@ export class AddJugadorComponent implements OnInit {
     fecha_fundacion : '',
     jugadores:[],
     torneos:[],
+  }*/
+
+  equipo: Equipo={
+    cod_equipo: '',
+    nombre_equipo: ''
   }
 
   equipos: Equipo[] = [];
@@ -37,6 +42,7 @@ export class AddJugadorComponent implements OnInit {
     altura: 0,
     tarjetas: 0,
     activo: false,
+    fecha_nacimiento: new Date(),
     equipo: this.equipo
   };
 

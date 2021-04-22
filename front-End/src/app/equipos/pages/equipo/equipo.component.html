@@ -12,7 +12,7 @@
                 <br><br>
                     <p> {{ equipo.direccion }}</p>
                     <p> {{ equipo.fecha_fundacion  }}</p>
-                    <p> {{ equipo.jugadores  }}</p>
+                    <p> {{ equipo.jugadores.length  }}</p>
                     <p> Numero torneos: {{ equipo.torneos.length  }}</p>
                 <br>
                 <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/equipos/list']">

@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Ciudad } from 'src/app/ciudades/interfaces/ciudad';
 import { CiudadesService } from 'src/app/ciudades/service/ciudades.service';
-import { Departamento } from 'src/app/departamentos/interfaces/departamento';
-import { Torneo } from '../../interfaces/torneo';
+import { Torneo,Ciudad } from '../../interfaces/torneo';
 import { TorneosService } from '../../service/torneos.service';
 
 @Component({
@@ -18,8 +16,7 @@ export class AddTorneoComponent implements OnInit {
 
   ciudad: Ciudad = {
     cod_ciudad: '1',
-    nombre: '',
-    torneos:[]
+    nombre: ''
   }
 
   ciudades: Ciudad[] = [];

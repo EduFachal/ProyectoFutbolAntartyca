@@ -1,4 +1,3 @@
-import { Departamento } from "src/app/departamentos/interfaces/departamento";
 import { Torneo } from "src/app/torneos/interfaces/torneo";
 
 export interface Ciudad {

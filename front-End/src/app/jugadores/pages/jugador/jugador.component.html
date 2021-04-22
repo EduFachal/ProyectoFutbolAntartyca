@@ -16,6 +16,7 @@
                     <p> {{ jugador.altura  }}</p>
                     <p> {{ jugador.tarjetas  }}</p>
                     <p> {{ jugador.activo  }}</p>
+                    <p> {{ jugador.fecha_nacimiento | date  }}</p>
                 <br>
                 <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
                     Ir atrás

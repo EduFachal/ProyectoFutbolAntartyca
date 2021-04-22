@@ -15,6 +15,7 @@
                 <th scope="col"> Altura </th>
                 <th scope="col"> Tarjetas </th>
                 <th scope="col"> Activo </th>
+                <th scope="col"> Fecha de nacimiento </th>
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
@@ -29,6 +30,7 @@
                 <td>{{ jugador.altura}}</td>
                 <td>{{ jugador.tarjetas}}</td>
                 <td>{{ jugador.activo }}</td>
+                <td>{{ jugador.fecha_nacimiento | date }}</td>
                 <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary">Mas información</button></td>
                 <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>

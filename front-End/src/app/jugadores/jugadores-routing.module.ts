@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './pages/list/list.component';
 import { JugadorComponent } from './pages/jugador/jugador.component';
 import { AddJugadorComponent } from './pages/add-jugador/add-jugador.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [{
   path:'',
@@ -13,6 +14,10 @@ const routes: Routes = [{
   {
     path:'add',
     component:AddJugadorComponent
+  },
+  {
+    path:'search',
+    component:SearchComponent
   },
   {
     path:'edit/:id',

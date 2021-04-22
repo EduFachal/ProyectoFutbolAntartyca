@@ -56,14 +56,14 @@ export class AddEquipoComponent implements OnInit {
 
     if (this.equipo.cod_equipo) {
       this.equipoService.updateEquipo(this.equipo)
-        .subscribe(hero => {
+        .subscribe(resp => {
           this.router.navigate(['/equipos/list'])
         })
     } else {
       this.equipo = { ...this.equipo, ...this.myForm.value }
       this.equipo.cod_equipo = "1";
       this.equipoService.addEquipo(this.equipo)
-        .subscribe(hero => {
+        .subscribe(resp => {
           this.router.navigate(['/equipos/list'])
         })
     }
