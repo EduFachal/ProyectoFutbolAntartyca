@@ -54,6 +54,7 @@ export class AddJugadorComponent implements OnInit {
     goles:[0,[Validators.required, Validators.minLength(0)]],
     altura:[0,[Validators.required, Validators.minLength(0)]],
     tarjetas:[0,[Validators.required, Validators.minLength(0)]],
+    fecha_nacimiento:['',[Validators.required, Validators.minLength(0)]],
     activo: [false]})
 
 
@@ -82,6 +83,7 @@ export class AddJugadorComponent implements OnInit {
       goles: 0,
       altura: 0,
       tarjetas: 0,
+      fecha_nacimiento: 0,
       activo: false  
     })
   }
@@ -94,7 +96,7 @@ export class AddJugadorComponent implements OnInit {
     } else {
       this.jugador = {...this.jugador,...this.myForm.value}
       this.jugador.cod_jugador="1";
-
+      this.jugador.fecha_nacimiento=this.myForm.get('fecha_nacimiento')?.value
       this.equipo.cod_equipo=this.myForm.get('nombre_equipo')?.value;
       this.jugador.equipo = this.equipo;
       this.jugadorService.addJugador(this.jugador)

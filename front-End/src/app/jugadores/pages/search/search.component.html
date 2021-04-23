@@ -10,6 +10,30 @@
                         placeholder="Introduzca numero de goles">
                 </div>
             </div>
+            <h1 class="mt-5">Posición</h1>
+            <div class="mb-3 row mt-4">
+                <label class="col-sm-3 control-label">Posicion</label>
+                <select formControlName="puesto" class="mb-2 col-md-8 col-sm-8">
+                    <option *ngFor="let puesto of puestos" [ngValue]="puesto">
+                        {{puesto}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="row mb-5 mt-5">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary col-sm-12 col-xs-12"
+                        (click)="buscarEquipoGolesPosicion()" [disabled]="form.invalid">
+                        Buscar por goles y posicion
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-success col-sm-12 col-xs-12"
+                        (click)="sacarExcelButton()" [disabled]="form.invalid">
+                        Extraer excel con la info
+                    </button>
+                </div>
+            </div>
 
             <h1 class="mt-5 mb-2">Fecha</h1>
             <div class="mt-3 row">
@@ -32,7 +56,7 @@
                 <div class="col">
                     <button type="submit" class="btn btn-primary col-md-6 col-sm-12 col-xs-12 mb-5 mt-5"
                         (click)="buscarEquipo()" (keyup.enter)="buscarEquipo()" [disabled]="form.invalid">
-                        Buscar
+                        Buscar por fecha
                     </button>
                 </div>
             </div>
@@ -49,7 +73,39 @@
     </div>
 
     <!-- En el caso de encontrar jugadores mostrará la lista con todos los jugadores-->
-    <div *ngIf="jugadores.length > 0">
-        <app-list></app-list>
-
+    <div *ngIf="jugadores.length > 0;">
+        <h1>SE HAN ENCONTRADO {{ jugadores.length }} RESULTADOS</h1>
+        <table class="table table-striped">
+            <!--Card es un componente hijo del componente lista-->
+            <thead>
+                <tr>
+                    <th scope="col"> ID </th>
+                    <th scope="col"> Nombre </th>
+                    <th scope="col"> Telefono </th>
+                    <th scope="col"> Puesto </th>
+                    <th scope="col"> Goles </th>
+                    <th scope="col"> Altura </th>
+                    <th scope="col"> Tarjetas </th>
+                    <th scope="col"> Activo </th>
+                    <th scope="col"> Fecha de nacimiento </th>
+                    <th scope="col"> Informacion </th>
+                    <th scope="col"> Edicion </th>
+                </tr>
+            </thead>
+            <tbody fxFlex="30" fxFlex.xl="15" fxFlex.lg="15" fxFlex.sm="30">
+                <tr *ngFor="let jugador of jugadores">
+                    <td>{{ jugador.cod_jugador}}</td>
+                    <td>{{ jugador.nombre}}</td>
+                    <td>{{ jugador.telefono}}</td>
+                    <td>{{ jugador.puesto}}</td>
+                    <td>{{ jugador.goles}}</td>
+                    <td>{{ jugador.altura}}</td>
+                    <td>{{ jugador.tarjetas}}</td>
+                    <td>{{ jugador.activo }}</td>
+                    <td>{{ jugador.fecha_nacimiento | date }}</td>
+                    <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary">Mas información</button></td>
+                    <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>

@@ -37,11 +37,19 @@ export class JugadoresService {
     return this.http.get<Jugador>(`${this.baseUrl}/jugador/delete/${jugador.cod_jugador}`);
   }
 
+  buscarJugadoresPorGolesYPosicion(posicion: string , goles: string) {
+    return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/buscarPorPuestoYGoles/${posicion}/${goles}`);
+  }
+
   buscarJugadoresPorGoles(goles: string) {
     return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/busquedaPorGoles/${goles}`);
   }
 
   buscarJugadoresPorFecha(fechaInicio : Date, fechaFin : Date){
     return this.http.get<Jugador[]>(`${this.baseUrl}/jugador/buscarEntreFechas/${fechaInicio}/${fechaFin}`);
+  }
+
+  sacarExcel(goles: string){
+    return this.http.get<Jugador[]>(`${this.baseUrl}/jugador//busquedaPorGoles/${goles}/export/excel`);
   }
 }

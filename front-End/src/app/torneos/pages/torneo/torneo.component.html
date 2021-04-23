@@ -1,24 +1,37 @@
 <div cols=1 *ngIf="!torneo; else divTorneo">
 
 </div>
-    <ng-template #divTorneo>
-        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
-            <div fxFlex="50">
-                <h1> {{ torneo.nombre}}</h1>
-                <br>
-            </div>
-            <div fxFlex="50">
-                <br><br>
-                <h3>
-                    ID Torneo : {{ torneo.cod_torneo }}
-                </h3><br><br>
-                <h3>
-                    Descripcion : {{ torneo.descripcion }}
-                </h3>
-                <br>
-                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/torneos/list']">
-                    Ir atrás
-                </button>
-            </div>
+<ng-template #divTorneo>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+        <div fxFlex="50">
+            <h1> {{ torneo.nombre}}</h1>
+            <br>
         </div>
-    </ng-template>
+        <div fxFlex="50" class="container">
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <h3 class="col-sm-5">
+                    ID TORNEO</h3>
+                <p class="col-sm-5"> {{ torneo.cod_torneo }}</p>
+            </div>
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <h3 class="col-sm-5">
+                    DESCRIPCION
+                </h3>
+                <p class="col-sm-5">{{ torneo.descripcion }}</p>
+            </div>
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <h3 class="col-sm-5">
+                    CIUDAD DEL TORNEO
+                </h3>
+                <p class="col-sm-5">{{ torneo.ciudad.nombre }}</p>
+            </div>
+            <br>
+            <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/torneos/list']">
+                Ir atrás
+            </button>
+        </div>
+    </div>
+</ng-template>

@@ -14,6 +14,8 @@ import { JugadoresService } from '../../service/jugadores.service';
 })
 export class SearchComponent implements OnInit {
 
+  puestos: string[]=['Delantero','Centrocampista','Defensa','Portero'];
+
   equipo: Equipo = {
     cod_equipo: '',
     nombre_equipo: '',
@@ -38,6 +40,7 @@ export class SearchComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     goles:[''],
+    puesto:[''],
     fechaInicio:[''],
     fechaFin:[''],
   })
@@ -48,23 +51,46 @@ export class SearchComponent implements OnInit {
     private fb: FormBuilder) { }
     
   ngOnInit(): void {
-   this.form.reset({
-    goles: '',
-    fechaInicio: '',
-    fechaFin: ''
+    this.resetForm();
+  }
 
-  })
+  resetForm(){
+    this.form.reset({
+      goles: '',
+      puesto: '',
+      fechaInicio: '',
+      fechaFin: ''})
+  }
+
+  buscarEquipoGolesPosicion(){
+
+    if(this.form.get('goles')?.value != '' && this.form.get('puesto')?.value != ''  && this.form.get('puesto')?.value != null){ 
+     this.jugadorService.buscarJugadoresPorGolesYPosicion(this.form.get('puesto')?.value,this.form.get('goles')?.value)
+      .subscribe(resp => this.jugadores = resp);
+
+    } else if(this.form.get('goles')?.value != '' && this.form.get('puesto')?.value != null ){
+      this.jugadorService.buscarJugadoresPorGoles(this.form.get('goles')?.value)
+      .subscribe(resp => this.jugadores = resp);
+    }
+    this.resetForm();
   }
 
   buscarEquipo(){
-    if(this.form.get('goles')?.value != ''){
-      this.jugadorService.buscarJugadoresPorGoles(this.form.get('goles')?.value)
-      .subscribe(resp => this.jugadores = resp);
-    }else if(this.form.get('fechas')?.value != ''){
+    
+  if(this.form.get('fechas')?.value != ''){
       this.jugadorService.buscarJugadoresPorFecha(this.form.get('fechaInicio')?.value,this.form.get('fechaFin')?.value)
       .subscribe(resp => this.jugadores = resp);
-    }
-    
+    } 
+    this.resetForm();
+  }
+
+  sacarExcelButton(){
+
+    if(this.form.get('goles')?.value != ''){ 
+      this.jugadorService.sacarExcel(this.form.get('goles')?.value)
+       .subscribe(resp => this.jugadores = resp);
+      window.alert('Se extrajo su excel')
+     }
   }
 
   limpiarTabla(){

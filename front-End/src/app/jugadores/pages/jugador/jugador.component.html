@@ -1,26 +1,65 @@
 <div cols=1 *ngIf="!jugador; else divJugador">
 
 </div>
-    <ng-template #divJugador>
-        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
-            <div fxFlex="50">
-                <h1> {{ jugador.nombre}}</h1>
-                <br>
-            </div>
-            <div fxFlex="50">
-                <h1>{{ jugador.nombre }}</h1>
-                <br><br>
-                    <p> {{ jugador.telefono }}</p>
-                    <p> {{ jugador.puesto  }}</p>
-                    <p> {{ jugador.goles  }}</p>
-                    <p> {{ jugador.altura  }}</p>
-                    <p> {{ jugador.tarjetas  }}</p>
-                    <p> {{ jugador.activo  }}</p>
-                    <p> {{ jugador.fecha_nacimiento | date  }}</p>
-                <br>
-                <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
-                    Ir atrás
-                </button>
-            </div>
+<ng-template #divJugador>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="50px">
+        <div fxFlex="50">
+            <h1> {{ jugador.nombre}}</h1>
+            <br>
         </div>
-    </ng-template>
+        <div fxFlex="50">
+
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    ID JUGADOR</h3>
+                <p class="col-sm-5"> {{ jugador.cod_jugador }}</p>
+            </div>
+
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    PUESTO
+                </h3>
+                <p class="col-sm-5">{{ jugador.puesto }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    GOLES
+                </h3>
+                <p class="col-sm-5">{{ jugador.goles }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    ALTURA
+                </h3>
+                <p class="col-sm-5">{{ jugador.altura }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    TARJETAS
+                </h3>
+                <p class="col-sm-5">{{ jugador.tarjetas }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    ACTIVO
+                </h3>
+                <p class="col-sm-5">{{ jugador.activo }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <h3 class="col-sm-5">
+                    FECHA DE NACIMIENTO
+                </h3>
+                <p class="col-sm-5">{{ jugador.fecha_nacimiento | date }}</p>
+            </div>
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                <h3 class="col-sm-5">
+                    NOMBRE DE EQUIPO
+                </h3>
+                <p class="col-sm-5">{{ jugador.equipo.nombre_equipo }}</p>
+            </div>
+            <button class="btn btn-warning col-md-4 col-sm-12 col-xs-12 mb-5" [routerLink]="['/jugadores/list']">
+                Ir atrás
+            </button>
+        </div>
+    </div>
+</ng-template>

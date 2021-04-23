@@ -10,6 +10,7 @@
                 <th scope="col"> Nombre </th>
                 <th scope="col"> Direccion </th>
                 <th scope="col"> Fecha de fundación </th>
+                <th scope="col"> Jugadores en el equipo </th>
                 <th scope="col"> Informacion </th>
                 <th scope="col"> Edicion </th>
             </tr>
@@ -20,6 +21,7 @@
                 <td>{{ equipo.nombre_equipo }}</td>
                 <td>{{ equipo.direccion }}</td>
                 <td>{{ equipo.fecha_fundacion | date}}</td>
+                <td>{{ equipo.jugadores.length }}</td>
                 <td><button [routerLink]="['/equipos',equipo.cod_equipo]" type="button" class="btn btn-primary">Mas información</button></td>
                 <td><button [routerLink]="['/equipos/edit',equipo.cod_equipo]" type="button" class="btn btn-dark">Editar</button></td>
             </tr>

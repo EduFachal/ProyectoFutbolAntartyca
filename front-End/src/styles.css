@@ -3,9 +3,10 @@
     width: 1598px;
     height: 888px;
     background-size: cover;
+    
 }
 
-h1,h2,th,form{
+h1,h2,th,form,h3{
     color: white;
 }
 
