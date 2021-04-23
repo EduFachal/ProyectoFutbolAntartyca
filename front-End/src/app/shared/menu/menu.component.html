@@ -1,5 +1,5 @@
 <div class="col-lg-12 col-sm-12 mt-5 mr-3">
-    <h2 class="mt-3" [routerLink]="['/jugadores/list']">Futbol App</h2>
+    <h2 class="mt-3" [routerLink]="['/']">Futbol App</h2>
     <hr>
 
     <ul class="list-group listColor">
@@ -8,8 +8,8 @@
             {{ item.texto }}
         </li>
     </ul>
-
-    <h2 class="mt-3">Acciones</h2>
+    <br>
+   <!-- <h2 class="mt-3">Acciones</h2>-->
     <hr>
 
     <ul class="list-group listColor">
@@ -24,7 +24,9 @@
     <h1>Buscador Dinamico</h1>
     <br><br>
     <mat-form-field>
+
         <mat-label>Jugador</mat-label>
+
         <input type="text"
         placeholder="Escoge jugador"
         matInput 
@@ -32,13 +34,16 @@
         [matAutocomplete]="auto" 
         (input)="searching()"
         style="color: white;" />
+
         <mat-autocomplete #auto="matAutocomplete" 
         autoActiveFirstOption 
         (optionSelected)="optionSelected($event)">
+        
             <mat-option *ngFor="let jugador of jugadores"
              [routerLink]="['/jugadores',jugador.cod_jugador]"
             [value]="jugador.nombre">{{ jugador.nombre }}</mat-option>
         </mat-autocomplete>
+
     </mat-form-field>
 
 </div>

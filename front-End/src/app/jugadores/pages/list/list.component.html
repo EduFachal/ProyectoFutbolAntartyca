@@ -31,8 +31,12 @@
                 <td>{{ jugador.tarjetas}}</td>
                 <td>{{ jugador.activo }}</td>
                 <td>{{ jugador.fecha_nacimiento | date }}</td>
-                <td><button [routerLink]="['/jugadores',jugador.cod_jugador]" type="button" class="btn btn-primary">Mas información</button></td>
-                <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar</button></td>
+               <td><i class="material-icons" [routerLink]="['/jugadores',jugador.cod_jugador]" type="button">
+                info       </i> </td>
+                <td><i class="material-icons"  [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button">
+                    edit
+                </i></td>
+              <!--   <td><button [routerLink]="['/jugadores/edit',jugador.cod_jugador]" type="button" class="btn btn-dark">Editar</button></td>-->
             </tr>
         </tbody>
     </table>

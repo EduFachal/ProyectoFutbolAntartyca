@@ -13,6 +13,7 @@ h1,h2,th,form,h3{
 td,p{
     color: orange;
     font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
 }
 
 input,select{
